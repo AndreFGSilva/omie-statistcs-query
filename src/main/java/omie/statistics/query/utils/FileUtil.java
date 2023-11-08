@@ -33,14 +33,18 @@ public class FileUtil {
         int month = localDate.getMonthValue();
         int day = localDate.getDayOfMonth();
 
-        // Correct month value
+        // Correct day/month value
+        String dayString = Integer.toString(day);
+        if (day < 10) {
+            dayString = Constants.ZERO_NUMBER + dayString;
+        }
         String monthString = Integer.toString(month);
         if (month < 10) {
             monthString = Constants.ZERO_NUMBER + monthString;
         }
 
         // Build final url
-        return Constants.INITIAL_URL + year + monthString + day + Constants.FINAL_URL;
+        return Constants.INITIAL_URL + year + monthString + dayString + Constants.FINAL_URL;
     }
 
     private void downloadFile(String url) throws IOException {
